@@ -26,6 +26,10 @@ document.getElementById(id).style.display = 'block';
 function randomNumFun(){
 var randomNumber = Math.floor(1000 + Math.random() * 9000);
 document.getElementById('genarateNum').value = randomNumber;
+
+emptyValue('inputPin');
+displayNone('matched');
+displayNone('unmatched');
 }
 
 // 3. input number value
@@ -35,3 +39,32 @@ function btnKey(id){
    const keyNumber = prevValue + key;
    document.getElementById('inputPin').value = keyNumber;
 }
+
+// 4. clean and clear input value
+function clean(){
+    document.getElementById('inputPin').value = '';
+}
+
+// 5. clear last value/ backspace button
+
+function cleanLast(){
+    const inputResult = document.getElementById('inputPin').value;
+    const removeValue = inputResult.slice(0, inputResult.length -1);
+    document.getElementById('inputPin').value = removeValue;
+}
+
+// 6. submit button (pin match or not consition)
+function submitBtn(){
+      const randomNumber = document.getElementById('genarateNum').value;
+      const typeNumber = document.getElementById('inputPin').value; 
+
+      // 7. matching condition
+      if(randomNumber == typeNumber){
+            displayBlock('matched');
+      }
+      // 8. unmatching condition
+      else{
+        displayBlock('unmatched');
+      }
+}
+
